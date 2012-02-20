@@ -34,9 +34,9 @@ module Keydown
 
     def to_html
       require 'tilt'
-      require 'rdiscount'
+      require 'kramdown'
 
-      markdown = RDiscount.new(@content)
+      markdown = Kramdown::Document.new(@content)
       context = OpenStruct.new(:html_content => markdown.to_html,
                                :classnames => classnames.to_hash,
                                :background_attribution_classnames => background_attribution_classnames,
